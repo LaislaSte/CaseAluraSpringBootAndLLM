@@ -36,6 +36,12 @@ public class Feedback {
         this.insight = insight;
     }
 
+    public Feedback(Long id, String user, String text) {
+        this.id = id;
+        this.user = user;
+        this.text = text;
+    }
+
     public Long getId() {
         return id;
     }
