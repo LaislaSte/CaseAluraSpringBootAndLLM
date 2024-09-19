@@ -6,8 +6,9 @@ import com.demollm.alura.models.bean.Feedback;
 import com.demollm.alura.models.bean.Intent;
 
 public record UpdateInsightDTO(
-        Feedback feedback,
-        String sentiment,
-        List<Intent> intent) {
+                Long id,
+                Feedback feedback,
+                String sentiment,
+                List<Intent> intent) {
 
 }

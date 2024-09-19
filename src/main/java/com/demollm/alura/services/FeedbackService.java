@@ -24,7 +24,7 @@ public class FeedbackService {
     }
 
     public Feedback create(CreateFeedbackDTO createFeedbackDTO) {
-        Feedback item = new Feedback(createFeedbackDTO.id(), createFeedbackDTO.user(), createFeedbackDTO.text());
+        Feedback item = new Feedback(createFeedbackDTO.user(), createFeedbackDTO.text());
         Feedback savedItem = feedbackRepository.save(item);
         return savedItem;
 
@@ -43,6 +43,7 @@ public class FeedbackService {
     public Feedback update(Long id, UpdateFeedbackDTO updateFeedbackDTO) {
         Feedback item = feedbackRepository.findById(id).orElse(null);
         if (item != null) {
+            item.setId(updateFeedbackDTO.id());
             item.setText(updateFeedbackDTO.text());
             item.setUser(updateFeedbackDTO.user());
             feedbackRepository.save(item);

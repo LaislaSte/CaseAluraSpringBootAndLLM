@@ -4,10 +4,13 @@ package com.demollm.alura.models.bean;
 import java.util.List;
 
 import jakarta.annotation.Nonnull;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
@@ -33,11 +36,19 @@ public class Insight {
     @Nonnull
     private String sentiment;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "feedback_id", referencedColumnName = "id") // This means Foreign key will be created only in the
+                                                                   // Insight table i.e. extra column 'feedback_id' will
+                                                                   // be
+                                                                   // created in the Insight table
     private Feedback feedback;
 
-    @OneToMany(mappedBy = "intent")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "intent_id", referencedColumnName = "id")
     private List<Intent> intent;
+
+    public Insight() {
+    }
 
     public Insight(Long id, Feedback feedback, String sentiment, List<Intent> intent) {
         this.id = id;
@@ -49,6 +60,12 @@ public class Insight {
     public Insight(Long id, String sentiment, List<Intent> intent) {
         this.id = id;
         this.sentiment = sentiment;
+        this.intent = intent;
+    }
+
+    public Insight(String sentiment, Feedback feedback, List<Intent> intent) {
+        this.sentiment = sentiment;
+        this.feedback = feedback;
         this.intent = intent;
     }
 

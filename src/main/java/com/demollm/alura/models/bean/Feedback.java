@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 
 @Entity
 public class Feedback {
@@ -20,20 +19,9 @@ public class Feedback {
     @Nonnull
     private String text;
 
-    @OneToOne
-    private Insight insight;
-
-    public Feedback(String user, String text, Insight insight) {
+    public Feedback(String user, String text) {
         this.user = user;
         this.text = text;
-        this.insight = insight;
-    }
-
-    public Feedback(Long id, String user, String text, Insight insight) {
-        this.id = id;
-        this.user = user;
-        this.text = text;
-        this.insight = insight;
     }
 
     public Feedback(Long id, String user, String text) {
@@ -66,17 +54,9 @@ public class Feedback {
         this.text = text;
     }
 
-    public Insight getInsight() {
-        return insight;
-    }
-
-    public void setInsight(Insight insight) {
-        this.insight = insight;
-    }
-
     @Override
     public String toString() {
-        return "Feedback [id=" + id + ", user=" + user + ", text=" + text + ", insight=" + insight + "]";
+        return "Feedback [id=" + id + ", user=" + user + ", text=" + text + "]";
     }
 
 }

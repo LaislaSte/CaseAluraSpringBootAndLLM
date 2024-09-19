@@ -24,7 +24,7 @@ public class IntentService {
     }
 
     public Intent create(CreateIntentDTO createIntentDTO) {
-        Intent item = new Intent(createIntentDTO.id(), createIntentDTO.intentCod(), createIntentDTO.reason());
+        Intent item = new Intent(createIntentDTO.intentCod(), createIntentDTO.reason());
         Intent savedItem = intentRepository.save(item);
         return savedItem;
 
@@ -43,6 +43,7 @@ public class IntentService {
     public Intent update(Long id, UpdateIntentDTO updateIntentDTO) {
         Intent item = intentRepository.findById(id).orElse(null);
         if (item != null) {
+            item.setId(updateIntentDTO.id());
             item.setIntentCod(updateIntentDTO.intentCod());
             item.setReason(updateIntentDTO.reason());
             intentRepository.save(item);
