@@ -30,6 +30,9 @@ public class Feedback {
         this.text = text;
     }
 
+    public Feedback() {
+    }
+
     public Long getId() {
         return id;
     }

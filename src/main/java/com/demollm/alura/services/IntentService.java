@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.demollm.alura.models.bean.Intent;
-import com.demollm.alura.models.dto.CreateIntentDTO;
 import com.demollm.alura.models.dto.UpdateIntentDTO;
 import com.demollm.alura.models.repository.IntentRepository;
 

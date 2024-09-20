@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.demollm.alura.models.bean.Insight;
-import com.demollm.alura.models.dto.CreateInsightDTO;
 import com.demollm.alura.models.dto.UpdateInsightDTO;
 import com.demollm.alura.models.repository.InsightRepository;
 

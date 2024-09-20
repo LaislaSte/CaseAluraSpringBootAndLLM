@@ -19,6 +19,9 @@ public class Intent {
     @Nonnull
     private String reason;
 
+    public Intent() {
+    }
+
     public Intent(String intentCod, String reason) {
         this.intentCod = intentCod;
         this.reason = reason;

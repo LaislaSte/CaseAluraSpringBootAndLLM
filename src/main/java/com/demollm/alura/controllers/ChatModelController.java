@@ -7,13 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demollm.alura.interfaces.AssistantResponse;
 import com.demollm.alura.interfaces.InsightExtractor;
 import com.demollm.alura.models.bean.Feedback;
 import com.demollm.alura.models.bean.Insight;
 import com.demollm.alura.models.bean.Intent;
+import com.demollm.alura.models.dto.GetInsightDTO;
 import com.demollm.alura.services.FeedbackService;
 import com.demollm.alura.services.InsightService;
 import com.demollm.alura.services.IntentService;
@@ -21,6 +25,7 @@ import com.demollm.alura.services.IntentService;
 import dev.langchain4j.data.message.UserMessage;
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.service.AiServices;
+import jakarta.websocket.server.PathParam;
 
 @RestController
 @RequestMapping(path = "/test")
@@ -48,13 +53,11 @@ public class ChatModelController {
     }
 
     @GetMapping("/prompt1")
-    public ResponseEntity<Insight> getResponseP1() {
+    public ResponseEntity<Insight> getResponseP1(@RequestBody GetInsightDTO request) {
 
         InsightExtractor extractor = AiServices.create(InsightExtractor.class, chatLanguageModel);
 
-        String text = """
-                Me chamo Lucas e gosto muito de usar o Alumind! Está me ajudando bastante em relação a alguns problemas que tenho. Só queria que houvesse uma forma mais fácil de eu mesmo realizar a edição do meu perfil dentro da minha conta
-                """;
+        String text = request.feedback();
 
         Insight insight = extractor.extractInsightFrom(text);
 
@@ -73,6 +76,16 @@ public class ChatModelController {
         Insight createdInsight = insightService.create(insight);
 
         return new ResponseEntity<Insight>(createdInsight, HttpStatus.OK);
+    }
+
+    @GetMapping("/assistantResponseFor/{id}")
+    public ResponseEntity<String> getAssisResp(@PathVariable("id") long id) {
+        AssistantResponse extractor = AiServices.create(AssistantResponse.class, chatLanguageModel);
+
+        Insight insight = insightService.findById(id);
+
+        String assistantResponse = extractor.getAssistantResponse(insight.toString());
+        return new ResponseEntity<String>(assistantResponse, HttpStatus.OK);
     }
 
 }
