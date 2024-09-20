@@ -40,10 +40,9 @@ public class FeedbackService {
         }
     }
 
-    public Feedback update(Long id, UpdateFeedbackDTO updateFeedbackDTO) {
-        Feedback item = feedbackRepository.findById(id).orElse(null);
+    public Feedback update(UpdateFeedbackDTO updateFeedbackDTO) {
+        Feedback item = feedbackRepository.findById(updateFeedbackDTO.id()).orElse(null);
         if (item != null) {
-            item.setId(updateFeedbackDTO.id());
             item.setText(updateFeedbackDTO.text());
             item.setUser(updateFeedbackDTO.user());
             feedbackRepository.save(item);

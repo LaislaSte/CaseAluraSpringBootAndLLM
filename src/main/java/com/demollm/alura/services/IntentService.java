@@ -41,9 +41,8 @@ public class IntentService {
     }
 
     public Intent update(Long id, UpdateIntentDTO updateIntentDTO) {
-        Intent item = intentRepository.findById(id).orElse(null);
+        Intent item = intentRepository.findById(updateIntentDTO.id()).orElse(null);
         if (item != null) {
-            item.setId(updateIntentDTO.id());
             item.setIntentCod(updateIntentDTO.intentCod());
             item.setReason(updateIntentDTO.reason());
             intentRepository.save(item);

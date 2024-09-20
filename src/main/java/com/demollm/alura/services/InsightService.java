@@ -42,9 +42,8 @@ public class InsightService {
     }
 
     public Insight update(Long id, UpdateInsightDTO updateInsightDTO) {
-        Insight item = insightRepository.findById(id).orElse(null);
+        Insight item = insightRepository.findById(updateInsightDTO.id()).orElse(null);
         if (item != null) {
-            item.setId(updateInsightDTO.id());
             item.setFeedback(updateInsightDTO.feedback());
             item.setSentiment(updateInsightDTO.sentiment());
             item.setIntent(updateInsightDTO.intent());
