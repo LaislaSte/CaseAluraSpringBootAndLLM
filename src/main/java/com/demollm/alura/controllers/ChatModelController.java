@@ -25,10 +25,8 @@ import com.demollm.alura.services.IntentService;
 import dev.langchain4j.data.message.UserMessage;
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.service.AiServices;
-import jakarta.websocket.server.PathParam;
 
 @RestController
-@RequestMapping(path = "/test")
 public class ChatModelController {
 
     @Autowired
@@ -46,7 +44,12 @@ public class ChatModelController {
         this.chatLanguageModel = chaBuilder;
     }
 
-    @GetMapping("/test")
+    @GetMapping("/")
+    public String index() {
+        return "Application is running";
+    }
+
+    @GetMapping("/testModel")
     public ResponseEntity<String> testModel() {
         String question = "Who painted the Mona Lisa?";
         return ResponseEntity.ok(chatLanguageModel.generate(UserMessage.from(question)).content().text());

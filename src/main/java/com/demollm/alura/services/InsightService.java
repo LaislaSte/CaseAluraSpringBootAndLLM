@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.demollm.alura.models.bean.Insight;
+import com.demollm.alura.models.dto.CreateInsightDTO;
 import com.demollm.alura.models.dto.UpdateInsightDTO;
 import com.demollm.alura.models.repository.InsightRepository;
 
@@ -25,7 +26,13 @@ public class InsightService {
     public Insight create(Insight insight) {
         Insight savedItem = insightRepository.save(insight);
         return savedItem;
+    }
 
+    public Insight create(CreateInsightDTO createInsightDTO) {
+        Insight savedItem = new Insight(createInsightDTO.sentiment(), createInsightDTO.feedback(),
+                createInsightDTO.intent());
+        savedItem = insightRepository.save(savedItem);
+        return savedItem;
     }
 
     public Insight deleteById(long id) {
@@ -38,7 +45,7 @@ public class InsightService {
         }
     }
 
-    public Insight update(Long id, UpdateInsightDTO updateInsightDTO) {
+    public Insight update(UpdateInsightDTO updateInsightDTO) {
         Insight item = insightRepository.findById(updateInsightDTO.id()).orElse(null);
         if (item != null) {
             item.setFeedback(updateInsightDTO.feedback());

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.demollm.alura.models.bean.Intent;
+import com.demollm.alura.models.dto.CreateIntentDTO;
 import com.demollm.alura.models.dto.UpdateIntentDTO;
 import com.demollm.alura.models.repository.IntentRepository;
 
@@ -28,6 +29,12 @@ public class IntentService {
 
     }
 
+    public Intent create(CreateIntentDTO createIntentDTO) {
+        Intent savedItem = intentRepository.save(new Intent(createIntentDTO.intentCod(), createIntentDTO.reason()));
+        savedItem = intentRepository.save(savedItem);
+        return savedItem;
+    }
+
     public Intent deleteById(long id) {
         Intent item = intentRepository.findById(id).orElse(null);
         if (item != null) {
@@ -38,7 +45,7 @@ public class IntentService {
         }
     }
 
-    public Intent update(Long id, UpdateIntentDTO updateIntentDTO) {
+    public Intent update(UpdateIntentDTO updateIntentDTO) {
         Intent item = intentRepository.findById(updateIntentDTO.id()).orElse(null);
         if (item != null) {
             item.setIntentCod(updateIntentDTO.intentCod());
