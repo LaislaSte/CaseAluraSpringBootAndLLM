@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demollm.alura.enums.Harmless;
 import com.demollm.alura.interfaces.AssistantResponse;
 import com.demollm.alura.interfaces.InsightExtractor;
+import com.demollm.alura.interfaces.SpamDetect;
 import com.demollm.alura.models.bean.Feedback;
 import com.demollm.alura.models.bean.Insight;
 import com.demollm.alura.models.bean.Intent;
@@ -88,6 +90,30 @@ public class ChatModelController {
 
         String assistantResponse = extractor.getAssistantResponse(insight.toString());
         return new ResponseEntity<String>(assistantResponse, HttpStatus.OK);
+    }
+
+    @GetMapping("/prompt2")
+    public ResponseEntity<String> getResponseP2(@RequestBody GetInsightDTO request) {
+
+        SpamDetect spamDetect = AiServices.create(SpamDetect.class, chatLanguageModel);
+
+        String text = request.feedback();
+
+        Harmless harmless = spamDetect.detectOffenses(text);
+
+        String a = yourDecizion(harmless);
+
+        return new ResponseEntity<String>(a, HttpStatus.OK);
+    }
+
+    public static String yourDecizion(Harmless harmless) {
+        if (harmless == Harmless.HARMLESS) {
+            return "HARMLESS";
+        } else if (harmless == Harmless.OFFENSIVE) {
+            return "OFFENSIVE";
+        } else
+            throw new IllegalArgumentException();
+
     }
 
 }
