@@ -2,13 +2,12 @@ version: '3.9'
 services:
   mysql_db:
     image: mysql
-    container_name: mysql-container
     ports:
       - '3306:3306'
     volumes:
       - ./database:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: secretpass
       MYSQL_DATABASE: spring_boot_with_llm
     restart: always
     networks:
@@ -16,7 +15,6 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin-container
     ports:
       - '8989:80'
     environment:
