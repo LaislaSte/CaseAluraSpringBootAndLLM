@@ -23,9 +23,8 @@ public class IntentService {
         return intentRepository.findById(id).orElse(null);
     }
 
-    public Intent create(CreateIntentDTO createIntentDTO) {
-        Intent item = new Intent(createIntentDTO.intentCod(), createIntentDTO.reason());
-        Intent savedItem = intentRepository.save(item);
+    public Intent create(Intent intent) {
+        Intent savedItem = intentRepository.save(intent);
         return savedItem;
 
     }

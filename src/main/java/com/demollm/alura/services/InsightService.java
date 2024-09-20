@@ -23,10 +23,8 @@ public class InsightService {
         return insightRepository.findById(id).orElse(null);
     }
 
-    public Insight create(CreateInsightDTO createInsightDTO) {
-        Insight item = new Insight(createInsightDTO.sentiment(), createInsightDTO.feedback(),
-                createInsightDTO.intent());
-        Insight savedItem = insightRepository.save(item);
+    public Insight create(Insight insight) {
+        Insight savedItem = insightRepository.save(insight);
         return savedItem;
 
     }

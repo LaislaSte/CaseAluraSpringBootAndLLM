@@ -24,10 +24,15 @@ public class FeedbackService {
     }
 
     public Feedback create(CreateFeedbackDTO createFeedbackDTO) {
-        Feedback item = new Feedback(createFeedbackDTO.user(), createFeedbackDTO.text());
-        Feedback savedItem = feedbackRepository.save(item);
+        Feedback savedItem = new Feedback(createFeedbackDTO.user(), createFeedbackDTO.text());
+        savedItem = feedbackRepository.save(savedItem);
         return savedItem;
 
+    }
+
+    public Feedback create(Feedback feedbackService) {
+        Feedback savedItem = feedbackRepository.save(feedbackService);
+        return savedItem;
     }
 
     public Feedback deleteById(long id) {
@@ -50,4 +55,5 @@ public class FeedbackService {
 
         return item;
     }
+
 }
