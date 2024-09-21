@@ -6,6 +6,6 @@ public enum Harmless {
     @Description("OFFENSIVE - Comentário que contém palavras ofensivas, xingamentos ou preconceito")
     OFFENSIVE,
 
-    @Description("HARMLESS - Comentário que contém um feedback, é inovensito ou fala do aplicativo")
+    @Description("HARMLESS - Comentário que contém um feedback, é inofensivo ou fala do aplicativo despretenciosamente")
     HARMLESS;
 }

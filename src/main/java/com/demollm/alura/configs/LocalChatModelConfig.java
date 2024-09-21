@@ -14,7 +14,7 @@ public class LocalChatModelConfig {
     ChatLanguageModel ollamaAIChatLanguageModel() {
         return OllamaChatModel.builder()
                 .baseUrl("http://localhost:11434/")
-                .modelName("phi3.5")
+                .modelName("gemma2:9b")
                 .logRequests(true)
                 .logResponses(true)
                 .build();

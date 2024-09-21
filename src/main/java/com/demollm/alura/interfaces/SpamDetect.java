@@ -7,7 +7,7 @@ import dev.langchain4j.service.UserMessage;
 public interface SpamDetect {
 
     @UserMessage("""
-                Analise se o texto sobre um aplicativo de saúde mental é inofensivo ou ofensivo \n
+                Analise se o comentário sobre um aplicativo de saúde mental é inofensivo ou ofensivo \n
                 texto: \n
                 {{it}}
             """)

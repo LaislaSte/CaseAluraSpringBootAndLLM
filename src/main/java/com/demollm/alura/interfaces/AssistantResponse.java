@@ -4,10 +4,9 @@ import dev.langchain4j.service.UserMessage;
 
 public interface AssistantResponse {
     @UserMessage("""
-            Com base na classe recebida no formato de Insight, escreva uma breve
-            resposta de um assistente virtual para o feedback do usuário
-            Insight format:
-            {{it}}
+                    Você atuará como um assistent virtual. Com base na classe recebida, analise os valores dos parametros e escreva uma breve resposta para o feedback do usuário. \n seja educado, simples e evite palavras ofensivas.
+                    classe:
+                    {{it}}
             """)
     String getAssistantResponse(String insight);
 }
