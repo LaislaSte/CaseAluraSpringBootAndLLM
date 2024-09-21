@@ -7,12 +7,10 @@ Desafio AluMind, uma startup que oferece um aplicativo focado em bem-estar e sa�
 ## Requisitos
 
 - Analisar sentimento do feedback
-- Extrair possível intenção do usuário
-- Classificar de intenção
+- Extrair possível intenção do usuário (menção de possível funcionalidade)
+- Classificar intenção
 - Detectar ofensas em feedbacks improdutivos
 - Gerar resposta do assistente para o feedback do usuário com base na intenção
-
-(Crie uma resposta a partir do sentimento identificado e das propostas de melhorias recebidas no feedback. Decida entre criar um endpoint a parte ou no mesmo endpoint e diga o porque no README do projeto, dizendo razoes tecnicas que levaram a decisão)
 
 ## Como rodar a aplicação
 
@@ -125,7 +123,7 @@ Formato da Resposta:
 
 ### Resposta do assistente
 
-`http://localhost:8000/assistantResponseFor/9`
+`http://localhost:8000/assistantResponseFor/{insight_id}`
 
 ### CRUD de entidades
 
@@ -172,7 +170,7 @@ texto: \n
 
 **Dashboard analítico** Integração com dashboard analítico para futuras análises, como por exemplo, intents mais pedidas, funcionalidades mais comentadas, trilhas com menor engajamento, etc.
 
-### Comentários para teste
+### Comentários para teste - feitos no Postman
 
 1.  **"Finalmente um app que realmente me ajuda a lidar com a ansiedade! Os exercícios diários são incríveis e os recursos de acompanhamento do meu humor são muito úteis."** (Positivo, Recursos de acompanhamento do meu humor)
 2.  **"Gostei da variedade de meditações guiadas, mas acho que poderiam adicionar mais opções para diferentes necessidades, como insônia ou stress pós-trabalho."** (Sugestão Positiva)
@@ -250,10 +248,40 @@ HARMLESS
 É ótimo saber que você gostou da variedade de meditações guiadas!  😊
 
 Agradecemos seu feedback sobre a possibilidade de adicionar mais opções para necessidades específicas como insônia e stress pós-trabalho. Vamos levar isso em consideração!
-
 ```
 
-3.
+3.  A interface é simples e fácil de usar, o que torna a experiência muito agradável. Recomendo para quem busca um app acessível e eficiente.
+
+```
+HARMLESS
+```
+
+```
+{
+    "id": 15,
+    "sentiment": "POSITIVO",
+    "feedback": {
+        "id": 16,
+        "user": "Usuário Satisfeito",
+        "text": "A interface é simples e fácil de usar, o que torna a experiência muito agradável. Recomendo para quem busca um app acessível e eficiente."
+    },
+    "intent": [
+        {
+            "id": 18,
+            "intentCod": "INTERFACE_USABILIDADE",
+            "reason": "A interface é simples e fácil de usar, o que torna a experiência muito agradável."
+        }
+    ]
+}
+```
+
+```
+Que bom saber que você está gostando da interface! 😊 É ótimo que a simplicidade e facilidade de uso te agradem.
+
+Agradecemos seu feedback e recomendação! 😄
+```
+
+4.
 
 ```
 HARMLESS
@@ -276,16 +304,16 @@ HARMLESS
         }
     ]
 }
+
 ```
 
 ```
 Entendo sua frustração! É realmente importante poder personalizar as coisas para que tudo funcione melhor.
 
 Vamos ver o que podemos fazer para melhorar as opções de personalização no app e atender às suas necessidades específicas. 😊
-
 ```
 
-4.
+5.
 
 ```
 HARMLESS
@@ -313,7 +341,6 @@ HARMLESS
         }
     ]
 }
-
 ```
 
 ```
@@ -323,34 +350,38 @@ Ajudar pessoas a lidar com problemas psicológicos complexos é muito importante
 
 
 Talvez seja interessante procurar por recursos especializados, como terapia ou grupos de apoio, que possam oferecer um suporte mais aprofundado. 😊
-
-```
-
-5.
-
-```
-
-```
-
-```
-
-```
-
-```
-
 ```
 
 6.
 
 ```
+HARMLESS
+```
+
+```
+{
+    "id": 14,
+    "sentiment": "NEUTRO",
+    "feedback": {
+        "id": 15,
+        "user": "Usuário Teste",
+        "text": "O app é ótimo para iniciantes, mas quem já tem experiência com mindfulness pode achar as atividades repetitivas."
+    },
+    "intent": [
+        {
+            "id": 17,
+            "intentCod": "ATIVIDADES_REPETITIVAS",
+            "reason": "quem já tem experiência com mindfulness pode achar as atividades repetitivas"
+        }
+    ]
+}
 
 ```
 
 ```
+Olá Usuário Teste!
 
-```
-
-```
+Entendemos seu feedback. É ótimo saber que o app é útil para iniciantes! 😊  Vamos considerar suas sugestões para tornar as atividades ainda mais interessantes e desafiadoras para quem já possui experiência em mindfulness. 🙏
 
 ```
 
