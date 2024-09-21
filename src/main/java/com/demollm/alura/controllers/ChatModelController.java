@@ -84,11 +84,11 @@ public class ChatModelController {
 
     @GetMapping("/assistantResponseFor/{id}")
     public ResponseEntity<String> getAssisResp(@PathVariable("id") long id) {
-        AssistantResponse extractor = AiServices.create(AssistantResponse.class, chatLanguageModel);
+        AssistantResponse createResponse = AiServices.create(AssistantResponse.class, chatLanguageModel);
 
         Insight insight = insightService.findById(id);
 
-        String assistantResponse = extractor.getAssistantResponse(insight.toString());
+        String assistantResponse = createResponse.getAssistantResponse(insight.toString());
         return new ResponseEntity<String>(assistantResponse, HttpStatus.OK);
     }
 
