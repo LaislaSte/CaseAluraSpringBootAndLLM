@@ -56,13 +56,15 @@ No package de `configs`, mude a configuração, no OllamaChatModel builder mude 
 
 [**Veja as opções no site do Ollama**](https://ollama.com/library/gemma2:9b)
 
-## Database Configuration with MySQL and JPA
+## Configuração do Database com MySQL e JPA
 
 Nas propriedades da aplicação está setado algumas informações do banco, que podem ser alteradas
 
-spring.datasource.url=jdbc:mysql://localhost:3306/spring_boot_with_llm
-spring.datasource.username=root
-spring.datasource.password=secretpass
+`spring.datasource.url=jdbc:mysql://localhost:3306/spring_boot_with_llm`
+
+`spring.datasource.username=root`
+
+`spring.datasource.password=secretpass`
 
 Se não for rodar localmente pelo docker, mude essas configurações acima.
 
@@ -79,6 +81,11 @@ Se não for rodar localmente pelo docker, mude essas configurações acima.
 > ![schema - modelo de estrutura do banco de dados](schema.png)
 
 ## Aplicação
+
+### Executar
+
+Com o comando maven rode `mvn spring-boot:run` ou `mvnw spring-boot:run` se não tiver o maven instalado.
+
 
 ### Detectar comentário ofensivo
 
