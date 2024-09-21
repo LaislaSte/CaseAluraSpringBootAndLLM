@@ -187,31 +187,38 @@ texto: \n
 HARMLESS
 ```
 
+![alt text](test-imgs/image-1.png)
+
 ```
 {
-    "id": 10,
-    "sentiment": "positivo",
+    "id": 16,
+    "sentiment": "POSITIVO",
     "feedback": {
-        "id": 11,
-        "user": null,
+        "id": 17,
+        "user": "Usuário Satisfeito",
         "text": "Finalmente um app que realmente me ajuda a lidar com a ansiedade! Os exercícios diários são incríveis e os recursos de acompanhamento do meu humor são muito úteis."
     },
     "intent": [
         {
-            "id": 11,
-            "intentCod": "funcionalidade_aplicaçao",
-            "reason": "Os exercícios diários são incríveis e os recursos de acompanhamento do meu humor são muito úteis."
+            "id": 19,
+            "intentCod": "EXERCICIOS_DIARIOS",
+            "reason": "Os exercícios diários são incríveis"
+        },
+        {
+            "id": 20,
+            "intentCod": "ACOMPANHAMENTO_HUMOR",
+            "reason": "os recursos de acompanhamento do meu humor são muito úteis."
         }
     ]
 }
 ```
 
+![alt text](test-imgs/image-1-res.png)
+
 ```
-Que bom saber que o aplicativo está te ajudando a lidar com a ansiedade! 😊
+Que ótimo saber que o app está te ajudando a lidar com a ansiedade! 😊
 
-É ótimo ouvir que você está achando os exercícios diários e os recursos de acompanhamento úteis. 💪
-
-Continue utilizando o app e sinta-se à vontade para nos enviar mais feedbacks caso tenha alguma sugestão ou dúvida. 😄
+É fantástico que você esteja achando os exercícios diários e os recursos de acompanhamento do seu humor úteis. Continuaremos trabalhando para aprimorar ainda mais o app e oferecer as melhores ferramentas para você se sentir bem. 💪
 ```
 
 2
@@ -220,29 +227,33 @@ Continue utilizando o app e sinta-se à vontade para nos enviar mais feedbacks c
 HARMLESS
 ```
 
+![alt text](test-imgs/image-2.png)
+
 ```
 {
-    "id": 11,
-    "sentiment": "positivo",
+    "id": 17,
+    "sentiment": "POSITIVO",
     "feedback": {
-        "id": 12,
-        "user": null,
+        "id": 18,
+        "user": "Usuário Satisfeito",
         "text": "Gostei da variedade de meditações guiadas, mas acho que poderiam adicionar mais opções para diferentes necessidades, como insônia ou stress pós-trabalho."
     },
     "intent": [
         {
-            "id": 12,
-            "intentCod": "funcionalidade_desejada",
+            "id": 21,
+            "intentCod": "ADD_CONTENT",
             "reason": "acho que poderiam adicionar mais opções para diferentes necessidades, como insônia ou stress pós-trabalho"
         },
         {
-            "id": 13,
-            "intentCod": "feedback_positivo",
+            "id": 22,
+            "intentCod": "LIKE_FEATURE",
             "reason": "Gostei da variedade de meditações guiadas"
         }
     ]
 }
 ```
+
+![alt text](test-imgs/image-2-res.png)
 
 ```
 É ótimo saber que você gostou da variedade de meditações guiadas!  😊
@@ -256,29 +267,35 @@ Agradecemos seu feedback sobre a possibilidade de adicionar mais opções para n
 HARMLESS
 ```
 
+![alt text](test-imgs/image-3.png)
+
 ```
 {
-    "id": 15,
+    "id": 18,
     "sentiment": "POSITIVO",
     "feedback": {
-        "id": 16,
-        "user": "Usuário Satisfeito",
+        "id": 19,
+        "user": "Usuário Anônimo",
         "text": "A interface é simples e fácil de usar, o que torna a experiência muito agradável. Recomendo para quem busca um app acessível e eficiente."
     },
     "intent": [
         {
-            "id": 18,
-            "intentCod": "INTERFACE_USABILIDADE",
+            "id": 23,
+            "intentCod": "USABILITY",
             "reason": "A interface é simples e fácil de usar, o que torna a experiência muito agradável."
         }
     ]
 }
 ```
 
-```
-Que bom saber que você está gostando da interface! 😊 É ótimo que a simplicidade e facilidade de uso te agradem.
+![alt text](test-imgs/image-3-res.png)
 
-Agradecemos seu feedback e recomendação! 😄
+```
+É ótimo saber que você está gostando da nossa interface! 😊
+
+Agradecemos seu feedback e ficamos felizes em saber que você a considera simples, fácil de usar e agradável. 💪
+
+Se tiver alguma sugestão para melhorar ainda mais a sua experiência, por favor, nos conte! 😄
 ```
 
 4.
@@ -287,30 +304,31 @@ Agradecemos seu feedback e recomendação! 😄
 HARMLESS
 ```
 
+![alt text](test-imgs/image-4.png)
+
 ```
 {
-    "id": 12,
-    "sentiment": "negativo",
+    "id": 19,
+    "sentiment": "NEGATIVE",
     "feedback": {
-        "id": 13,
-        "user": null,
+        "id": 20,
+        "user": "Usuario123",
         "text": "Fiquei decepcionado com a falta de opções personalizáveis. O app parece seguir um roteiro fixo e não adapta às minhas necessidades específicas."
     },
     "intent": [
         {
-            "id": 14,
-            "intentCod": "personalizacao",
-            "reason": "Fiquei decepcionado com a falta de opções personalizáveis."
+            "id": 24,
+            "intentCod": "PERSONALIZACAO",
+            "reason": "Falta de opções personalizáveis"
         }
     ]
 }
-
 ```
 
-```
-Entendo sua frustração! É realmente importante poder personalizar as coisas para que tudo funcione melhor.
+![alt text](test-imgs/image-4-res.png)
 
-Vamos ver o que podemos fazer para melhorar as opções de personalização no app e atender às suas necessidades específicas. 😊
+```
+Entendo sua frustração, Usuario123. Lamentamos que você tenha se sentido decepcionado com a falta de opções de personalização. Agradecemos seu feedback e o usaremos para melhorar o aplicativo.  Estamos trabalhando para oferecer mais flexibilidade no futuro!
 ```
 
 5.
@@ -319,37 +337,35 @@ Vamos ver o que podemos fazer para melhorar as opções de personalização no a
 HARMLESS
 ```
 
+![alt text](test-imgs/image-5.png)
+
 ```
 {
-    "id": 13,
-    "sentiment": "negativo",
+    "id": 20,
+    "sentiment": "NEGATIVE",
     "feedback": {
-        "id": 14,
-        "user": null,
+        "id": 21,
+        "user": "João Doe",
         "text": "Achei o conteúdo um pouco superficial. Preciso de algo mais profundo para lidar com os meus problemas psicológicos complexos"
     },
     "intent": [
         {
-            "id": 15,
-            "intentCod": "feedback_conteudo",
-            "reason": "Achei o conteúdo um pouco superficial"
-        },
-        {
-            "id": 16,
-            "intentCod": "funcionalidade_desejada",
+            "id": 25,
+            "intentCod": "CONTENT_DEPTH",
             "reason": "Preciso de algo mais profundo para lidar com os meus problemas psicológicos complexos"
         }
     ]
 }
 ```
 
+![alt text](test-imgs/image-5-res.png)
+
 ```
-Entendo seu feedback.  Sinto muito que o conteúdo tenha sido considerado superficial para suas necessidades.
+Olá João Doe!
 
-Ajudar pessoas a lidar com problemas psicológicos complexos é muito importante e reconheço que meu conteúdo pode não ser suficiente para isso.
+Entendo que você achou o conteúdo um pouco superficial e precisa de algo mais aprofundado para lidar com seus problemas psicológicos.
 
-
-Talvez seja interessante procurar por recursos especializados, como terapia ou grupos de apoio, que possam oferecer um suporte mais aprofundado. 😊
+Vamos ver como posso te ajudar a encontrar recursos mais completos e adequados às suas necessidades.  Você poderia me dizer um pouco mais sobre os tipos de problemas que você enfrenta?
 ```
 
 6.
@@ -357,6 +373,8 @@ Talvez seja interessante procurar por recursos especializados, como terapia ou g
 ```
 HARMLESS
 ```
+
+![alt text](test-imgs/image-6.png)
 
 ```
 {
@@ -377,6 +395,8 @@ HARMLESS
 }
 
 ```
+
+![alt text](test-imgs/image-6-res.png)
 
 ```
 Olá Usuário Teste!
