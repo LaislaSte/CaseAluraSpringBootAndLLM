@@ -18,7 +18,9 @@ import com.demollm.alura.interfaces.SpamDetect;
 import com.demollm.alura.models.bean.Feedback;
 import com.demollm.alura.models.bean.Insight;
 import com.demollm.alura.models.bean.Intent;
+import com.demollm.alura.models.dto.AssistantResponseDTO;
 import com.demollm.alura.models.dto.GetInsightDTO;
+import com.demollm.alura.models.dto.HarmlessResponseDTO;
 import com.demollm.alura.services.FeedbackService;
 import com.demollm.alura.services.InsightService;
 import com.demollm.alura.services.IntentService;
@@ -41,8 +43,8 @@ public class ChatModelController {
 
     private final ChatLanguageModel chatLanguageModel;
 
-    public ChatModelController(ChatLanguageModel chaBuilder) {
-        this.chatLanguageModel = chaBuilder;
+    public ChatModelController(ChatLanguageModel chatBuilder) {
+        this.chatLanguageModel = chatBuilder;
     }
 
     @GetMapping("/")
@@ -83,30 +85,31 @@ public class ChatModelController {
     }
 
     @GetMapping("/assistantResponseFor/{id}")
-    public ResponseEntity<String> getAssisResp(@PathVariable("id") long id) {
+    public ResponseEntity<AssistantResponseDTO> getAssisResp(@PathVariable("id") long id) {
         AssistantResponse createResponse = AiServices.create(AssistantResponse.class, chatLanguageModel);
 
         Insight insight = insightService.findById(id);
 
-        String assistantResponse = createResponse.getAssistantResponse(insight.toString());
-        return new ResponseEntity<String>(assistantResponse, HttpStatus.OK);
+        String llmResponse = createResponse.getAssistantResponse(insight.toString());
+        AssistantResponseDTO assistantResponseDTO = new AssistantResponseDTO(llmResponse);
+        return new ResponseEntity<AssistantResponseDTO>(assistantResponseDTO, HttpStatus.OK);
     }
 
     @GetMapping("/prompt2")
-    public ResponseEntity<String> getResponseP2(@RequestBody GetInsightDTO request) {
+    public ResponseEntity<HarmlessResponseDTO> getResponseP2(@RequestBody GetInsightDTO request) {
 
         SpamDetect spamDetect = AiServices.create(SpamDetect.class, chatLanguageModel);
 
         String text = request.feedback();
 
-        Harmless harmless = spamDetect.detectOffenses(text);
+        Harmless llmResponse = spamDetect.detectOffenses(text);
+        String response = decizion(llmResponse);
+        HarmlessResponseDTO harmlessResponseDTO = new HarmlessResponseDTO(response);
 
-        String a = yourDecizion(harmless);
-
-        return new ResponseEntity<String>(a, HttpStatus.OK);
+        return new ResponseEntity<HarmlessResponseDTO>(harmlessResponseDTO, HttpStatus.OK);
     }
 
-    public static String yourDecizion(Harmless harmless) {
+    public static String decizion(Harmless harmless) {
         if (harmless == Harmless.HARMLESS) {
             return "HARMLESS";
         } else if (harmless == Harmless.OFFENSIVE) {
